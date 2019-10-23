@@ -1,4 +1,4 @@
-package com.karntrehan.starwars.architecture
+package com.trivago.challenge.architecture
 
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
+import com.trivago.challenge.R
 import java.net.UnknownHostException
 
 
@@ -101,7 +102,7 @@ abstract class BaseFragment : Fragment() {
 
     //Open to allow extending fragment to override this behaviour
     protected open fun showNetworkError() {
-        showToast(com.karntrehan.starwars.R.string.cannot_connect_to_internet)
+        showToast(R.string.cannot_connect_to_internet)
     }
 
     //region region:Toolbar

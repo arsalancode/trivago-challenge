@@ -1,4 +1,4 @@
-package com.karntrehan.starwars.extensions
+package com.trivago.challenge.extensions
 
 import java.math.RoundingMode
 

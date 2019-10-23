@@ -1,4 +1,4 @@
-package com.karntrehan.starwars.extensions
+package com.trivago.challenge.extensions
 
 abstract class EndlessScrollListener : androidx.recyclerview.widget.RecyclerView.OnScrollListener {
   // The minimum amount of items to have below your current scroll position

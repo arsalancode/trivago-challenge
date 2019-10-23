@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import com.karntrehan.starwars.extensions.gone
-import com.karntrehan.starwars.extensions.isValid
+import com.trivago.challenge.extensions.gone
+import com.trivago.challenge.extensions.isValid
 import com.trivago.challenge.characters.R
 import kotlinx.android.synthetic.main.view_character_species_details.view.*
 

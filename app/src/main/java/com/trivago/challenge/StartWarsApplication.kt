@@ -1,7 +1,7 @@
-package com.karntrehan.starwars
+package com.trivago.challenge
 
 import android.app.Application
-import com.karntrehan.starwars.dependencies.BaseDependencies
+import com.trivago.challenge.dependencies.BaseDependencies
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

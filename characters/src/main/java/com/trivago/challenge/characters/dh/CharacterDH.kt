@@ -15,9 +15,9 @@ object CharacterDH {
 
     fun init() {
         loadKoinModules(
-             characterDetailsModule(),
-             characterSearchModule(),
-             characterModule()
+            characterDetailsModule(),
+            characterSearchModule(),
+            characterModule()
         )
     }
 
@@ -25,34 +25,34 @@ object CharacterDH {
     private fun characterDetailsModule(): Module = module {
         viewModel { CharacterDetailsVM(get()) }
         single {
-             characterDetailsContract(
+            characterDetailsContract(
                 get()
             )
         }
     }
 
     private fun characterDetailsContract(service: CharacterService)
-            :  CharacterDetailsContract.Repo =
-         CharacterDetailsRepo(service)
+            : CharacterDetailsContract.Repo =
+        CharacterDetailsRepo(service)
 
     //Search module
     private fun characterSearchModule(): Module = module {
         viewModel { CharacterSearchVM(get()) }
         single {
-             characterSearchContract(
+            characterSearchContract(
                 get()
             )
         }
     }
 
-    private fun characterSearchContract(service:  CharacterService)
+    private fun characterSearchContract(service: CharacterService)
             : CharacterSearchContract.Repo =
         CharacterSearchRepo(service)
 
 
     //Character module
     private fun characterModule(): Module = module {
-        single {  characterService(get()) }
+        single { characterService(get()) }
     }
 
     private fun characterService(retrofit: Retrofit): CharacterService = retrofit.create()

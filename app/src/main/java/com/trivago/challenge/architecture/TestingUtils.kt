@@ -1,4 +1,4 @@
-package com.karntrehan.starwars.architecture
+package com.trivago.challenge.architecture
 
 import android.annotation.SuppressLint
 import androidx.annotation.VisibleForTesting

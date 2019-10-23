@@ -4,9 +4,9 @@ package com.trivago.challenge.characters.view
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.karntrehan.starwars.architecture.BaseFragment
-import com.karntrehan.starwars.extensions.isValid
-import com.karntrehan.starwars.extensions.visible
+import com.trivago.challenge.architecture.BaseFragment
+import com.trivago.challenge.extensions.isValid
+import com.trivago.challenge.extensions.visible
 import com.trivago.challenge.characters.R
 import com.trivago.challenge.characters.view.layouts.FilmDetailsView
 import com.trivago.challenge.characters.view.layouts.SpecieDetailsView

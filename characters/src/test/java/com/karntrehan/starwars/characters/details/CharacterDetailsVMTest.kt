@@ -3,14 +3,7 @@ package com.karntrehan.starwars.characters.details
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.google.gson.Gson
-import com.karntrehan.starwars.architecture.TestingUtils
-import com.trivago.challenge.characters.model.CharacterDetailsModel
-import com.trivago.challenge.characters.model.FilmDetailsModel
-import com.trivago.challenge.characters.model.SpeciesDetailsModel
-import com.trivago.challenge.characters.model.FilmResponseModel
-import com.trivago.challenge.characters.model.HomeworldResponseModel
-import com.trivago.challenge.characters.model.SpeciesResponseModel
-import com.trivago.challenge.characters.networking.CharacterDetailsContract
+import com.trivago.challenge.architecture.TestingUtils
 import com.karntrehan.starwars.characters.utils.TrampolineSchedulerRule
 import com.karntrehan.starwars.characters.viewmodel.CharacterDetailsVM
 import com.nhaarman.mockitokotlin2.*

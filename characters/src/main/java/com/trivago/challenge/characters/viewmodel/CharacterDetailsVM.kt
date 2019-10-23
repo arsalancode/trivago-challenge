@@ -2,10 +2,10 @@ package com.trivago.challenge.characters.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.karntrehan.starwars.architecture.BaseVM
-import com.karntrehan.starwars.extensions.divide
-import com.karntrehan.starwars.extensions.hide
-import com.karntrehan.starwars.extensions.show
+import com.trivago.challenge.architecture.BaseVM
+import com.trivago.challenge.extensions.divide
+import com.trivago.challenge.extensions.hide
+import com.trivago.challenge.extensions.show
 import com.trivago.challenge.characters.model.CharacterDetailsModel
 import com.trivago.challenge.characters.networking.CharacterDetailsContract
 import io.reactivex.Flowable

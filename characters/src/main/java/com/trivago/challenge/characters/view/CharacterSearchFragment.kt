@@ -9,11 +9,11 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.karntrehan.starwars.architecture.BaseFragment
+import com.trivago.challenge.architecture.BaseFragment
 import com.trivago.challenge.characters.adapter.CharacterSearchAdapter
-import com.karntrehan.starwars.extensions.EndlessScrollListener
-import com.karntrehan.starwars.extensions.gone
-import com.karntrehan.starwars.extensions.visible
+import com.trivago.challenge.extensions.EndlessScrollListener
+import com.trivago.challenge.extensions.gone
+import com.trivago.challenge.extensions.visible
 import com.trivago.challenge.characters.R
 import com.trivago.challenge.characters.viewmodel.CharacterSearchVM
 import io.reactivex.rxkotlin.addTo

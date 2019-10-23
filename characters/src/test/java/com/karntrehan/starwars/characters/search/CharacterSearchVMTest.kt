@@ -4,10 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.karntrehan.starwars.architecture.RemoteResponse
-import com.karntrehan.starwars.architecture.TestingUtils
+import com.trivago.challenge.architecture.RemoteResponse
+import com.trivago.challenge.architecture.TestingUtils
 import com.trivago.challenge.characters.model.CharacterSearchModel
-import com.trivago.challenge.characters.networking.CharacterSearchContract
 import com.karntrehan.starwars.characters.utils.TrampolineSchedulerRule
 import com.karntrehan.starwars.characters.viewmodel.CharacterSearchVM
 import com.nhaarman.mockitokotlin2.*
@@ -195,16 +194,16 @@ class CharacterSearchVMTest {
         println("\nCharacter search verified: $message")
     }
 
-    private fun mockInitialData(): RemoteResponse<List<com.trivago.challenge.characters.model.CharacterSearchModel>> {
-        val responseModelToken: Type = object : TypeToken<RemoteResponse<List<com.trivago.challenge.characters.model.CharacterSearchModel>>>() {}.type
+    private fun mockInitialData(): RemoteResponse<List<CharacterSearchModel>> {
+        val responseModelToken: Type = object : TypeToken<RemoteResponse<List<CharacterSearchModel>>>() {}.type
         return gson.fromJson(
             TestingUtils.getResponseFromJson("/search/initial_load"),
             responseModelToken
         )
     }
 
-    private fun mockLukeSearch(): RemoteResponse<List<com.trivago.challenge.characters.model.CharacterSearchModel>> {
-        val responseModelToken: Type = object : TypeToken<RemoteResponse<List<com.trivago.challenge.characters.model.CharacterSearchModel>>>() {}.type
+    private fun mockLukeSearch(): RemoteResponse<List<CharacterSearchModel>> {
+        val responseModelToken: Type = object : TypeToken<RemoteResponse<List<CharacterSearchModel>>>() {}.type
         return gson.fromJson(
             TestingUtils.getResponseFromJson("/search/luke_search"),
             responseModelToken

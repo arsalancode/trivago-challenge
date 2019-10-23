@@ -1,4 +1,4 @@
-package com.karntrehan.starwars.architecture
+package com.trivago.challenge.architecture
 
 import com.google.gson.annotations.SerializedName
 

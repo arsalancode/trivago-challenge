@@ -1,9 +1,9 @@
-package com.karntrehan.starwars.architecture
+package com.trivago.challenge.architecture
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.karntrehan.starwars.extensions.hide
+import com.trivago.challenge.extensions.hide
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseVM : ViewModel() {

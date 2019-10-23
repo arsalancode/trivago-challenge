@@ -1,4 +1,4 @@
-package com.karntrehan.starwars.dependencies
+package com.trivago.challenge.dependencies
 
 /**
  * Fields annotated with @Exclude will not be parsed in retrofit network requests

@@ -1,10 +1,10 @@
-package com.karntrehan.starwars.dependencies
+package com.trivago.challenge.dependencies
 
 import android.content.Context
 import com.google.gson.ExclusionStrategy
 import com.google.gson.FieldAttributes
 import com.google.gson.GsonBuilder
-import com.karntrehan.starwars.BuildConfig
+import com.trivago.challenge.BuildConfig
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,7 +22,13 @@ object BaseDependencies {
     val networkingModule = module {
 
         /*Retrofit instance*/
-        single { providesRetrofit(get(), get(), get()) }
+        single {
+            providesRetrofit(
+                get(),
+                get(),
+                get()
+            )
+        }
 
         /*Okhttp client instance*/
         single { providesOkHttpClient(get()) }

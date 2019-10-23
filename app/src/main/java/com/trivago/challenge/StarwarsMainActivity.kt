@@ -1,9 +1,9 @@
-package com.karntrehan.starwars
+package com.trivago.challenge
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.karntrehan.starwars.extensions.Activities
-import com.karntrehan.starwars.extensions.intentTo
+import com.trivago.challenge.extensions.Activities
+import com.trivago.challenge.extensions.intentTo
 
 class StarwarsMainActivity : AppCompatActivity() {
 

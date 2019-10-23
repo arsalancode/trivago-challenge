@@ -3,10 +3,10 @@ package com.trivago.challenge.characters.viewmodel
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.karntrehan.starwars.architecture.BaseVM
-import com.karntrehan.starwars.architecture.RemoteResponse
-import com.karntrehan.starwars.extensions.hide
-import com.karntrehan.starwars.extensions.show
+import com.trivago.challenge.architecture.BaseVM
+import com.trivago.challenge.architecture.RemoteResponse
+import com.trivago.challenge.extensions.hide
+import com.trivago.challenge.extensions.show
 import com.trivago.challenge.characters.model.CharacterSearchModel
 import com.trivago.challenge.characters.networking.CharacterSearchContract
 import io.reactivex.Single

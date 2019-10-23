@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import com.karntrehan.starwars.extensions.isValid
+import com.trivago.challenge.extensions.isValid
 import com.trivago.challenge.characters.R
 import kotlinx.android.synthetic.main.view_character_film_details.view.*
 
