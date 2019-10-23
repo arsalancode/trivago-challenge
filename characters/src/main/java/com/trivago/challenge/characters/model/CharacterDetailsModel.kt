@@ -1,7 +1,7 @@
 package com.trivago.challenge.characters.model
 
 import com.google.gson.annotations.SerializedName
-import com.trivago.challenge.dependencies.Exclude
+import com.trivago.challenge.networking.Exclude
 
 data class CharacterDetailsModel(
     @SerializedName("url") val url: String?,

@@ -1,10 +1,11 @@
-package com.trivago.challenge.dependencies
+package com.trivago.challenge.dh
 
 import android.content.Context
 import com.google.gson.ExclusionStrategy
 import com.google.gson.FieldAttributes
 import com.google.gson.GsonBuilder
 import com.trivago.challenge.BuildConfig
+import com.trivago.challenge.networking.Exclude
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

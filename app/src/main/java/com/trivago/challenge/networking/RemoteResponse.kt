@@ -1,4 +1,4 @@
-package com.trivago.challenge.architecture
+package com.trivago.challenge.networking
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,4 +1,4 @@
-package com.trivago.challenge.architecture
+package com.trivago.challenge.utils
 
 import android.annotation.SuppressLint
 import androidx.annotation.VisibleForTesting

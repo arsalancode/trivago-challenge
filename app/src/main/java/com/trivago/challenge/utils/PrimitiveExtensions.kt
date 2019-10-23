@@ -1,4 +1,4 @@
-package com.trivago.challenge.extensions
+package com.trivago.challenge.utils
 
 import java.math.RoundingMode
 

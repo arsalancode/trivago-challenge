@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import com.trivago.challenge.extensions.gone
-import com.trivago.challenge.extensions.isValid
+import com.trivago.challenge.view.extensions.gone
+import com.trivago.challenge.utils.isValid
 import com.trivago.challenge.characters.R
 import kotlinx.android.synthetic.main.view_character_species_details.view.*
 

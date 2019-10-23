@@ -4,8 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.trivago.challenge.architecture.RemoteResponse
-import com.trivago.challenge.architecture.TestingUtils
+import com.trivago.challenge.networking.RemoteResponse
+import com.trivago.challenge.utils.TestingUtils
 import com.trivago.challenge.characters.model.CharacterSearchModel
 import com.karntrehan.starwars.characters.utils.TrampolineSchedulerRule
 import com.karntrehan.starwars.characters.viewmodel.CharacterSearchVM

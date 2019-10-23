@@ -1,9 +1,9 @@
-package com.trivago.challenge.architecture
+package com.trivago.challenge.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.trivago.challenge.extensions.hide
+import com.trivago.challenge.view.extensions.hide
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseVM : ViewModel() {

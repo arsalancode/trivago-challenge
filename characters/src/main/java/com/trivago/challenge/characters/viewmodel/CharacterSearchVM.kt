@@ -3,10 +3,10 @@ package com.trivago.challenge.characters.viewmodel
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.trivago.challenge.architecture.BaseVM
-import com.trivago.challenge.architecture.RemoteResponse
-import com.trivago.challenge.extensions.hide
-import com.trivago.challenge.extensions.show
+import com.trivago.challenge.viewmodel.BaseVM
+import com.trivago.challenge.networking.RemoteResponse
+import com.trivago.challenge.view.extensions.hide
+import com.trivago.challenge.view.extensions.show
 import com.trivago.challenge.characters.model.CharacterSearchModel
 import com.trivago.challenge.characters.networking.CharacterSearchContract
 import io.reactivex.Single

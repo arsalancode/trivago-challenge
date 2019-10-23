@@ -1,9 +1,10 @@
-package com.trivago.challenge
+package com.trivago.challenge.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.trivago.challenge.extensions.Activities
-import com.trivago.challenge.extensions.intentTo
+import com.trivago.challenge.R
+import com.trivago.challenge.view.extensions.Activities
+import com.trivago.challenge.view.extensions.intentTo
 
 class StarwarsMainActivity : AppCompatActivity() {
 

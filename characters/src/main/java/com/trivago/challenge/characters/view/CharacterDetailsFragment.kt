@@ -4,9 +4,9 @@ package com.trivago.challenge.characters.view
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.trivago.challenge.architecture.BaseFragment
-import com.trivago.challenge.extensions.isValid
-import com.trivago.challenge.extensions.visible
+import com.trivago.challenge.view.BaseFragment
+import com.trivago.challenge.utils.isValid
+import com.trivago.challenge.view.extensions.visible
 import com.trivago.challenge.characters.R
 import com.trivago.challenge.characters.view.layouts.FilmDetailsView
 import com.trivago.challenge.characters.view.layouts.SpecieDetailsView

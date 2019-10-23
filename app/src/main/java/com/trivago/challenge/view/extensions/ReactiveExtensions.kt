@@ -1,4 +1,4 @@
-package com.trivago.challenge.extensions
+package com.trivago.challenge.view.extensions
 
 import androidx.lifecycle.MutableLiveData
 

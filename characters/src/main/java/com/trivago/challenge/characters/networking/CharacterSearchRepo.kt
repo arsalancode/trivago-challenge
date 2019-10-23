@@ -1,6 +1,6 @@
 package com.trivago.challenge.characters.networking
 
-import com.trivago.challenge.architecture.RemoteResponse
+import com.trivago.challenge.networking.RemoteResponse
 import com.trivago.challenge.characters.model.CharacterSearchModel
 import io.reactivex.Single
 
