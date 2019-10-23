@@ -10,11 +10,11 @@ interface CharacterSearchContract {
         /**
          * Get all the characters with pagination
          * */
-        fun characters(url: String): Single<RemoteResponse<List<com.trivago.challenge.characters.model.CharacterSearchModel>>>
+        fun characters(url: String): Single<RemoteResponse<List<CharacterSearchModel>>>
 
         /**
          * Get searched characters with pagination
          * */
-        fun searchCharacter(query: String): Single<RemoteResponse<List<com.trivago.challenge.characters.model.CharacterSearchModel>>>
+        fun searchCharacter(query: String): Single<RemoteResponse<List<CharacterSearchModel>>>
     }
 }

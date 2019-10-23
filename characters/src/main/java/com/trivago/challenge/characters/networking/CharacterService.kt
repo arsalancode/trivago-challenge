@@ -1,7 +1,6 @@
 package com.trivago.challenge.characters.networking
 
 import com.karntrehan.starwars.architecture.RemoteResponse
-import com.karntrehan.starwars.characters.model.*
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

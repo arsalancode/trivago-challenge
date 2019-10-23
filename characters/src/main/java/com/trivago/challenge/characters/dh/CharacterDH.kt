@@ -1,12 +1,8 @@
 package com.trivago.challenge.characters.dh
 
-import com.trivago.challenge.characters.networking.CharacterDetailsContract
-import com.trivago.challenge.characters.networking.CharacterDetailsRepo
-import com.trivago.challenge.characters.networking.CharacterService
-import com.trivago.challenge.characters.networking.CharacterSearchContract
-import com.trivago.challenge.characters.networking.CharacterSearchRepo
-import com.karntrehan.starwars.characters.viewmodel.CharacterDetailsVM
-import com.karntrehan.starwars.characters.viewmodel.CharacterSearchVM
+import com.trivago.challenge.characters.networking.*
+import com.trivago.challenge.characters.viewmodel.CharacterDetailsVM
+import com.trivago.challenge.characters.viewmodel.CharacterSearchVM
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
@@ -19,9 +15,9 @@ object CharacterDH {
 
     fun init() {
         loadKoinModules(
-            com.trivago.challenge.characters.dh.CharacterDH.characterDetailsModule(),
-            com.trivago.challenge.characters.dh.CharacterDH.characterSearchModule(),
-            com.trivago.challenge.characters.dh.CharacterDH.characterModule()
+             characterDetailsModule(),
+             characterSearchModule(),
+             characterModule()
         )
     }
 
@@ -29,36 +25,36 @@ object CharacterDH {
     private fun characterDetailsModule(): Module = module {
         viewModel { CharacterDetailsVM(get()) }
         single {
-            com.trivago.challenge.characters.dh.CharacterDH.characterDetailsContract(
+             characterDetailsContract(
                 get()
             )
         }
     }
 
-    private fun characterDetailsContract(service: com.trivago.challenge.characters.networking.CharacterService)
-            : com.trivago.challenge.characters.networking.CharacterDetailsContract.Repo =
-        com.trivago.challenge.characters.networking.CharacterDetailsRepo(service)
+    private fun characterDetailsContract(service: CharacterService)
+            :  CharacterDetailsContract.Repo =
+         CharacterDetailsRepo(service)
 
     //Search module
     private fun characterSearchModule(): Module = module {
         viewModel { CharacterSearchVM(get()) }
         single {
-            com.trivago.challenge.characters.dh.CharacterDH.characterSearchContract(
+             characterSearchContract(
                 get()
             )
         }
     }
 
-    private fun characterSearchContract(service: com.trivago.challenge.characters.networking.CharacterService)
-            : com.trivago.challenge.characters.networking.CharacterSearchContract.Repo =
-        com.trivago.challenge.characters.networking.CharacterSearchRepo(service)
+    private fun characterSearchContract(service:  CharacterService)
+            : CharacterSearchContract.Repo =
+        CharacterSearchRepo(service)
 
 
     //Character module
     private fun characterModule(): Module = module {
-        single { com.trivago.challenge.characters.dh.CharacterDH.characterService(get()) }
+        single {  characterService(get()) }
     }
 
-    private fun characterService(retrofit: Retrofit): com.trivago.challenge.characters.networking.CharacterService = retrofit.create()
+    private fun characterService(retrofit: Retrofit): CharacterService = retrofit.create()
 
 }

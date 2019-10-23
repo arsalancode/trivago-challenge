@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import com.karntrehan.starwars.architecture.BaseFragment
-import com.karntrehan.starwars.characters.R
-import com.karntrehan.starwars.characters.viewmodel.CharacterDetailsVM
-import com.karntrehan.starwars.characters.ui.layouts.FilmDetailsView
-import com.karntrehan.starwars.characters.ui.layouts.SpecieDetailsView
 import com.karntrehan.starwars.extensions.isValid
 import com.karntrehan.starwars.extensions.visible
+import com.trivago.challenge.characters.R
+import com.trivago.challenge.characters.view.layouts.FilmDetailsView
+import com.trivago.challenge.characters.view.layouts.SpecieDetailsView
+import com.trivago.challenge.characters.viewmodel.CharacterDetailsVM
 import kotlinx.android.synthetic.main.actionbar_toolbar.*
 import kotlinx.android.synthetic.main.fragment_character_details.*
 import org.koin.android.ext.android.inject

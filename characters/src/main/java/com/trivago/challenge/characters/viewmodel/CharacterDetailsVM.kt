@@ -3,28 +3,25 @@ package com.trivago.challenge.characters.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.karntrehan.starwars.architecture.BaseVM
-import com.trivago.challenge.characters.model.CharacterDetailsModel
-import com.trivago.challenge.characters.model.FilmDetailsModel
-import com.trivago.challenge.characters.model.HomeworldResponseModel
-import com.trivago.challenge.characters.model.SpeciesDetailsModel
-import com.trivago.challenge.characters.networking.CharacterDetailsContract
 import com.karntrehan.starwars.extensions.divide
 import com.karntrehan.starwars.extensions.hide
 import com.karntrehan.starwars.extensions.show
+import com.trivago.challenge.characters.model.CharacterDetailsModel
+import com.trivago.challenge.characters.networking.CharacterDetailsContract
 import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.functions.BiFunction
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 
-class CharacterDetailsVM(private val repo: com.trivago.challenge.characters.networking.CharacterDetailsContract.Repo) : BaseVM() {
+class CharacterDetailsVM(private val repo: CharacterDetailsContract.Repo) : BaseVM() {
 
-    private val characterDetails = MutableLiveData<com.trivago.challenge.characters.model.CharacterDetailsModel>()
+    private val characterDetails = MutableLiveData<CharacterDetailsModel>()
 
     private var specieName: String? = null
     private var specieLanguage: String? = null
 
-    fun getCharacterDetails(url: String): LiveData<com.trivago.challenge.characters.model.CharacterDetailsModel> {
+    fun getCharacterDetails(url: String): LiveData<CharacterDetailsModel> {
         if (characterDetails.value == null) {
 
             _loading.show()
@@ -66,7 +63,7 @@ class CharacterDetailsVM(private val repo: com.trivago.challenge.characters.netw
     }
 
 
-    private fun speciesAndHomeWorld(details: com.trivago.challenge.characters.model.CharacterDetailsModel): Single<List<com.trivago.challenge.characters.model.SpeciesDetailsModel>> {
+    private fun speciesAndHomeWorld(details: CharacterDetailsModel): Single<List<com.trivago.challenge.characters.model.SpeciesDetailsModel>> {
         //Iterate through all the character species urls
         return Flowable.fromIterable(details.speciesUrl)
             //Get the details for each specie
@@ -93,7 +90,7 @@ class CharacterDetailsVM(private val repo: com.trivago.challenge.characters.netw
             .toList()
     }
 
-    private fun films(details: com.trivago.challenge.characters.model.CharacterDetailsModel): Single<List<com.trivago.challenge.characters.model.FilmDetailsModel>>? {
+    private fun films(details: CharacterDetailsModel): Single<List<com.trivago.challenge.characters.model.FilmDetailsModel>>? {
         return Flowable.fromIterable(details.filmUrls)
             //Get details from each film
             .flatMapSingle { filmUrl -> repo.getFilmDetails(filmUrl) }

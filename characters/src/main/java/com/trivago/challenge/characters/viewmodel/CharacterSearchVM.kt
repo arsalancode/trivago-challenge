@@ -5,18 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.karntrehan.starwars.architecture.BaseVM
 import com.karntrehan.starwars.architecture.RemoteResponse
-import com.trivago.challenge.characters.networking.CharacterSearchContract
-import com.trivago.challenge.characters.model.CharacterSearchModel
 import com.karntrehan.starwars.extensions.hide
 import com.karntrehan.starwars.extensions.show
+import com.trivago.challenge.characters.model.CharacterSearchModel
+import com.trivago.challenge.characters.networking.CharacterSearchContract
 import io.reactivex.Single
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 
-class CharacterSearchVM(private val repo: com.trivago.challenge.characters.networking.CharacterSearchContract.Repo) : BaseVM() {
+class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM() {
 
-    private val _characters = MutableLiveData<List<com.trivago.challenge.characters.model.CharacterSearchModel>>()
-    val characters: LiveData<List<com.trivago.challenge.characters.model.CharacterSearchModel>> by lazy { _characters }
+    private val _characters = MutableLiveData<List<CharacterSearchModel>>()
+    val characters: LiveData<List<CharacterSearchModel>> by lazy { _characters }
 
     private var nextPageUrl: String? = ""
     private var processing: Boolean = false
@@ -46,7 +46,7 @@ class CharacterSearchVM(private val repo: com.trivago.challenge.characters.netwo
      * resetItems clears the current contents.
      * */
     private fun handleCharactersObs(
-        charactersObs: Single<RemoteResponse<List<com.trivago.challenge.characters.model.CharacterSearchModel>>>,
+        charactersObs: Single<RemoteResponse<List<CharacterSearchModel>>>,
         resetItems: Boolean
     ) {
         charactersObs
@@ -73,10 +73,10 @@ class CharacterSearchVM(private val repo: com.trivago.challenge.characters.netwo
 
     private fun appendOrSetResults(
         resetItems: Boolean,
-        existingData: List<com.trivago.challenge.characters.model.CharacterSearchModel>?,
-        newData: List<com.trivago.challenge.characters.model.CharacterSearchModel>
-    ): List<com.trivago.challenge.characters.model.CharacterSearchModel> {
-        val finalData = mutableListOf<com.trivago.challenge.characters.model.CharacterSearchModel>()
+        existingData: List<CharacterSearchModel>?,
+        newData: List<CharacterSearchModel>
+    ): List<CharacterSearchModel> {
+        val finalData = mutableListOf<CharacterSearchModel>()
         if (resetItems || existingData.isNullOrEmpty())
             finalData.addAll(newData)
         else {
@@ -106,7 +106,7 @@ class CharacterSearchVM(private val repo: com.trivago.challenge.characters.netwo
     }
 
     @VisibleForTesting(otherwise = VisibleForTesting.NONE)
-    fun setCharacter(characters: List<com.trivago.challenge.characters.model.CharacterSearchModel>?) {
+    fun setCharacter(characters: List<CharacterSearchModel>?) {
         _characters.postValue(characters)
     }
 

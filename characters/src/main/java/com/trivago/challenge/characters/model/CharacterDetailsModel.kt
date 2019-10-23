@@ -11,10 +11,10 @@ data class CharacterDetailsModel(
     @Exclude val heightFtInches: Pair<String, String>?,
 
     @SerializedName("species") val speciesUrl: List<String>?,
-    @Exclude val specieDetails: List<com.trivago.challenge.characters.model.SpeciesDetailsModel>?,
+    @Exclude val specieDetails: List<SpeciesDetailsModel>?,
 
     @SerializedName("films") val filmUrls: List<String>?,
-    @Exclude val filmDetails: List<com.trivago.challenge.characters.model.FilmDetailsModel>?
+    @Exclude val filmDetails: List<FilmDetailsModel>?
 ) {
 
 

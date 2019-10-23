@@ -10,12 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.karntrehan.starwars.architecture.BaseFragment
-import com.karntrehan.starwars.characters.R
 import com.trivago.challenge.characters.adapter.CharacterSearchAdapter
-import com.karntrehan.starwars.characters.viewmodel.CharacterSearchVM
 import com.karntrehan.starwars.extensions.EndlessScrollListener
 import com.karntrehan.starwars.extensions.gone
 import com.karntrehan.starwars.extensions.visible
+import com.trivago.challenge.characters.R
+import com.trivago.challenge.characters.viewmodel.CharacterSearchVM
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.actionbar_toolbar.*
