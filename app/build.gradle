@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.compileSdk
     defaultConfig {
-        applicationId "com.karntrehan.starwars"
+        applicationId "com.trivago.challenge"
         minSdkVersion rootProject.minSdk
         targetSdkVersion rootProject.targetSdk
         versionCode 1

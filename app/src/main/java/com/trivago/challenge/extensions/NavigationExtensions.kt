@@ -21,7 +21,8 @@ interface NavigatableActivity {
 object Activities {
 
     object Characters : NavigatableActivity {
-        override val className = "$PACKAGE_NAME.characters.view.CharacterActivity"
+//        override val className = "$PACKAGE_NAME.characters.view.CharacterActivity"
+        override val className = "com.trivago.challenge.characters.view.CharacterActivity"
     }
 
 }
