@@ -21,7 +21,9 @@ import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.actionbar_toolbar.*
 import kotlinx.android.synthetic.main.fragment_search_character.*
 import org.koin.android.ext.android.inject
+import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.concurrent.schedule
 
 
 class CharacterSearchFragment : BaseFragment(),
@@ -132,7 +134,7 @@ class CharacterSearchFragment : BaseFragment(),
         //A listener to get user's query and manipulate it before going to vm
         searchListener
                 //To ensure queries are run when the user pauses typing
-                .debounce(300, TimeUnit.MILLISECONDS)
+                .debounce(800, TimeUnit.MILLISECONDS)
                 .subscribe {
                     //Reset the pagination state
                     endlessScrollListener.resetState()
@@ -148,8 +150,15 @@ class CharacterSearchFragment : BaseFragment(),
                 rvCharacters.gone()
             } else {
                 adapter.swapData(characters)
-                llNoData.gone()
-                rvCharacters.visible()
+
+                // Data swap takes little bit time, so if we show before data swap is completed
+                // then it can show old data for short time. So to avoid that added little delay.
+                Timer().schedule(1000){
+                    parentActivity.runOnUiThread {
+                        llNoData.gone()
+                        rvCharacters.visible()
+                    }
+                }
             }
         })
     }

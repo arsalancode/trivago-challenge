@@ -26,8 +26,6 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
 
     private val initialAPI = "people"
 
-    private var birthYear: String? = null
-
     fun initialLoad() {
         if (_characters.value != null && !_characters.value.isNullOrEmpty()) return
 
@@ -39,7 +37,7 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
         if (processing) return
 
         processing = true
-        handleCharactersObs(repo.characters(url), resetItems, null)
+        handleCharactersObs(repo.characters(url), resetItems)
     }
 
     /**
@@ -49,8 +47,7 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
      * */
     private fun handleCharactersObs(
         charactersObs: Single<RemoteResponse<List<CharacterSearchModel>>>,
-        resetItems: Boolean,
-        birthYear: String?
+        resetItems: Boolean
     ) {
         charactersObs
             .subscribeOn(Schedulers.io())
@@ -61,15 +58,6 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
             }
             .map { searchModels ->
                 appendOrSetResults(resetItems, _characters.value, searchModels)
-            }
-            .map { it ->
-
-                println("Filter: $it")
-
-                when (birthYear) {
-                    null -> it
-                    else -> it.filter { it.birthYear.equals(birthYear, true) }
-                }
             }
             .subscribe({
                 _loading.hide()
@@ -101,11 +89,7 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
     fun loadNextPage() {
         nextPageUrl?.run {
             _paginationLoading.show()
-
-            when (birthYear) {
-                null -> getCharacters(this, false)
-                else -> handleCharactersObs(repo.characters(this), false, birthYear + "BBY")
-            }
+            getCharacters(this, false)
         }
     }
 
@@ -115,25 +99,68 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
         _loading.show()
 
         when (query.toIntOrNull()) {
-            null -> {
-                birthYear = null
-                handleCharactersObs(repo.searchCharacter(query), true, null)
-            }
-            else -> {
-                birthYear = query
-                handleCharactersObs(repo.characters(initialAPI), true, birthYear + "BBY")
 
-                // also find in next pages //
-//                filterCharacterByBirthYear(birthYear)
-            }
+            // Filter by Name
+            null -> handleCharactersObs(repo.searchCharacter(query), true)
+
+            // Filter by Birth Year
+            else -> filterCharactersByBirthYear(
+                repo.characters(initialAPI),
+                true,
+                query + "BBY",
+                mutableListOf()
+            )
+
         }
+    }
 
-//        handleCharactersObs(repo.searchCharacter(query), true)
+    private fun filterCharactersByBirthYear(
+        charactersObs: Single<RemoteResponse<List<CharacterSearchModel>>>,
+        resetItems: Boolean,
+        birthYear: String?,
+        existingData: List<CharacterSearchModel>?
+    ) {
+        charactersObs
+            .subscribeOn(Schedulers.io())
+            .observeOn(Schedulers.computation())
+            .map { response ->
+                nextPageUrl = response.next
+                return@map response.results
+            }
+            .map { it -> it.filter { it.birthYear.equals(birthYear, true) } }
+            .map { searchModels ->
+                appendOrSetResults(resetItems, existingData, searchModels)
+            }
+            .subscribe({
+
+                // Find BirthYear in next pages as well
+                if (nextPageUrl != null) {
+
+                    if (it.isNotEmpty())
+                        _characters.postValue(it)
+
+                    nextPageUrl?.run {
+                        filterCharactersByBirthYear( repo.characters(this), false, birthYear, it)
+                    }
+
+                } else {
+
+                    // We've reached at end of data
+                    _loading.hide()
+                    _paginationLoading.hide()
+                    _characters.postValue(it)
+                    processing = false
+                }
+
+            }, {
+                handleError(it)
+                processing = false
+            })
+            .addTo(disposable)
     }
 
     fun refreshCharacters() {
         _loading.show()
-        birthYear = null
         getCharacters(url = initialAPI, resetItems = true)
     }
 
