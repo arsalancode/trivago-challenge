@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:orientation="vertical"
     tools:context=".view.CharacterSearchFragment"
     tools:showIn="@layout/activity_character">
@@ -23,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/no_characters_found" />
+            android:text="@string/no_characters_found"
+            android:textColor="@color/text_color" />
 
         <Button
             android:id="@+id/btnShowAllCharacters"

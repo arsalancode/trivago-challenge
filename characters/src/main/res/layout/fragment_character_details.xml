@@ -39,7 +39,7 @@
 
                 <TextView
                     android:id="@+id/tvNameLabel"
-                    style="@style/TextAppearance.AppCompat.Large"
+                    style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_width="@dimen/label_width"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -63,7 +63,7 @@
 
                 <TextView
                     android:id="@+id/tvYOBLabel"
-                    style="@style/TextAppearance.AppCompat.Large"
+                    style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_width="@dimen/label_width"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -87,7 +87,7 @@
 
                 <TextView
                     android:id="@+id/tvHeightLabel"
-                    style="@style/TextAppearance.AppCompat.Large"
+                    style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_width="@dimen/label_width"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -131,7 +131,7 @@
 
                 <TextView
                     android:id="@+id/tvSpeciesLabel"
-                    style="@style/TextAppearance.AppCompat.Large"
+                    style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_width="@dimen/label_width"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -147,7 +147,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
                     android:orientation="vertical"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
