@@ -63,9 +63,9 @@ object BaseDependencies {
     private fun providesOkHttpClient(cache: Cache): OkHttpClient {
         val client = OkHttpClient.Builder()
                 .cache(cache)
-                .connectTimeout(10, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
 
         if (BuildConfig.DEBUG) {
             val logging = HttpLoggingInterceptor()

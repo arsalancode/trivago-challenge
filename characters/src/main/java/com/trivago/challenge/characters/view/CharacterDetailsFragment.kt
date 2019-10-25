@@ -4,13 +4,15 @@ package com.trivago.challenge.characters.view
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.trivago.challenge.view.BaseFragment
-import com.trivago.challenge.utils.isValid
-import com.trivago.challenge.view.extensions.visible
 import com.trivago.challenge.characters.R
+import com.trivago.challenge.characters.model.CharacterDetailsModel
+import com.trivago.challenge.characters.model.CharacterSearchModel
 import com.trivago.challenge.characters.view.layouts.FilmDetailsView
 import com.trivago.challenge.characters.view.layouts.SpecieDetailsView
 import com.trivago.challenge.characters.viewmodel.CharacterDetailsVM
+import com.trivago.challenge.utils.isValid
+import com.trivago.challenge.view.BaseFragment
+import com.trivago.challenge.view.extensions.visible
 import kotlinx.android.synthetic.main.actionbar_toolbar.*
 import kotlinx.android.synthetic.main.fragment_character_details.*
 import org.koin.android.ext.android.inject
@@ -21,17 +23,17 @@ class CharacterDetailsFragment : BaseFragment() {
 
     override val viewModel: CharacterDetailsVM by inject()
 
-    private var selectedCharacter: com.trivago.challenge.characters.model.CharacterSearchModel? = null
+    private var selectedCharacter: CharacterSearchModel? = null
 
     companion object {
         const val TAG = "CharacterDetailsFragment"
         const val CHARACTER = "character"
-        fun newInstance(character: com.trivago.challenge.characters.model.CharacterSearchModel) =
-                CharacterDetailsFragment().apply {
-                    arguments = Bundle().apply {
-                        putParcelable(CHARACTER, character)
-                    }
+        fun newInstance(character: CharacterSearchModel) =
+            CharacterDetailsFragment().apply {
+                arguments = Bundle().apply {
+                    putParcelable(CHARACTER, character)
                 }
+            }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,9 +64,9 @@ class CharacterDetailsFragment : BaseFragment() {
         selectedCharacter?.url?.run {
             //Trigger character details load
             viewModel.getCharacterDetails(this)
-                    .observe(this@CharacterDetailsFragment, Observer { details ->
-                        handleCharacterDetails(details)
-                    })
+                .observe(this@CharacterDetailsFragment, Observer { details ->
+                    handleCharacterDetails(details)
+                })
         }
 
     }
@@ -72,7 +74,7 @@ class CharacterDetailsFragment : BaseFragment() {
     /**
      * Set the character details to the UI
      * */
-    private fun handleCharacterDetails(details: com.trivago.challenge.characters.model.CharacterDetailsModel) {
+    private fun handleCharacterDetails(details: CharacterDetailsModel) {
 
         tvName.text = details.name
 
@@ -86,8 +88,10 @@ class CharacterDetailsFragment : BaseFragment() {
 
         if (details.heightFtInches != null) {
             tvHeightFeet.visible()
-            tvHeightFeet.text = String.format(getString(R.string.feet_inches),
-                    details.heightFtInches.first, details.heightFtInches.second)
+            tvHeightFeet.text = String.format(
+                getString(R.string.feet_inches),
+                details.heightFtInches.first, details.heightFtInches.second
+            )
         }
 
         details.specieDetails?.run {

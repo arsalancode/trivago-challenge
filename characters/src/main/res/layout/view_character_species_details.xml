@@ -11,6 +11,7 @@
         style="@style/TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/label_color"
         tools:text="Wookie" />
 
     <TextView
@@ -18,6 +19,7 @@
         style="@style/TextAppearance.AppCompat.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/label_color"
         tools:text="speak Shyriiwook" />
 
     <TextView
@@ -25,6 +27,7 @@
         style="@style/TextAppearance.AppCompat.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/label_color"
         tools:text="live in Tatooine" />
 
     <TextView
@@ -32,6 +35,7 @@
         style="@style/TextAppearance.AppCompat.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/label_color"
         tools:text="with population 120,000" />
 
 </LinearLayout>
