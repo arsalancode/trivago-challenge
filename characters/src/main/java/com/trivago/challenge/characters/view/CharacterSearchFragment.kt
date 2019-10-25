@@ -146,8 +146,8 @@ class CharacterSearchFragment : BaseFragment(),
     private fun startListeningToCharacters() {
         viewModel.characters.observe(this, Observer { characters ->
             if (characters.isEmpty()) {
-                llNoData.visible()
-                rvCharacters.gone()
+                llNoData?.visible()
+                rvCharacters?.gone()
             } else {
                 adapter.swapData(characters)
 
@@ -155,8 +155,8 @@ class CharacterSearchFragment : BaseFragment(),
                 // then it can show old data for short time. So to avoid that added little delay.
                 Timer().schedule(1000){
                     parentActivity.runOnUiThread {
-                        llNoData.gone()
-                        rvCharacters.visible()
+                        llNoData?.gone()
+                        rvCharacters?.visible()
                     }
                 }
             }
