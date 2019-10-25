@@ -3,12 +3,12 @@ package com.trivago.challenge.characters.viewmodel
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.trivago.challenge.viewmodel.BaseVM
+import com.trivago.challenge.characters.model.CharacterSearchModel
+import com.trivago.challenge.characters.networking.CharacterSearchContract
 import com.trivago.challenge.networking.RemoteResponse
 import com.trivago.challenge.view.extensions.hide
 import com.trivago.challenge.view.extensions.show
-import com.trivago.challenge.characters.model.CharacterSearchModel
-import com.trivago.challenge.characters.networking.CharacterSearchContract
+import com.trivago.challenge.viewmodel.BaseVM
 import io.reactivex.Single
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
@@ -26,6 +26,8 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
 
     private val initialAPI = "people"
 
+    private var birthYear: String? = null
+
     fun initialLoad() {
         if (_characters.value != null && !_characters.value.isNullOrEmpty()) return
 
@@ -37,7 +39,7 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
         if (processing) return
 
         processing = true
-        handleCharactersObs(repo.characters(url), resetItems)
+        handleCharactersObs(repo.characters(url), resetItems, null)
     }
 
     /**
@@ -47,7 +49,8 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
      * */
     private fun handleCharactersObs(
         charactersObs: Single<RemoteResponse<List<CharacterSearchModel>>>,
-        resetItems: Boolean
+        resetItems: Boolean,
+        birthYear: String?
     ) {
         charactersObs
             .subscribeOn(Schedulers.io())
@@ -58,6 +61,15 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
             }
             .map { searchModels ->
                 appendOrSetResults(resetItems, _characters.value, searchModels)
+            }
+            .map { it ->
+
+                println("Filter: $it")
+
+                when (birthYear) {
+                    null -> it
+                    else -> it.filter { it.birthYear.equals(birthYear, true) }
+                }
             }
             .subscribe({
                 _loading.hide()
@@ -89,7 +101,11 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
     fun loadNextPage() {
         nextPageUrl?.run {
             _paginationLoading.show()
-            getCharacters(this, false)
+
+            when (birthYear) {
+                null -> getCharacters(this, false)
+                else -> handleCharactersObs(repo.characters(this), false, birthYear + "BBY")
+            }
         }
     }
 
@@ -97,11 +113,27 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
         if (query.isNullOrEmpty()) return
 
         _loading.show()
-        handleCharactersObs(repo.searchCharacter(query), true)
+
+        when (query.toIntOrNull()) {
+            null -> {
+                birthYear = null
+                handleCharactersObs(repo.searchCharacter(query), true, null)
+            }
+            else -> {
+                birthYear = query
+                handleCharactersObs(repo.characters(initialAPI), true, birthYear + "BBY")
+
+                // also find in next pages //
+//                filterCharacterByBirthYear(birthYear)
+            }
+        }
+
+//        handleCharactersObs(repo.searchCharacter(query), true)
     }
 
     fun refreshCharacters() {
         _loading.show()
+        birthYear = null
         getCharacters(url = initialAPI, resetItems = true)
     }
 

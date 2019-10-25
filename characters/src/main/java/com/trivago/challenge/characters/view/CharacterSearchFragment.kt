@@ -9,13 +9,13 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.trivago.challenge.view.BaseFragment
+import com.trivago.challenge.characters.R
 import com.trivago.challenge.characters.adapter.CharacterSearchAdapter
+import com.trivago.challenge.characters.viewmodel.CharacterSearchVM
+import com.trivago.challenge.view.BaseFragment
 import com.trivago.challenge.view.extensions.EndlessScrollListener
 import com.trivago.challenge.view.extensions.gone
 import com.trivago.challenge.view.extensions.visible
-import com.trivago.challenge.characters.R
-import com.trivago.challenge.characters.viewmodel.CharacterSearchVM
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.actionbar_toolbar.*
@@ -62,6 +62,9 @@ class CharacterSearchFragment : BaseFragment(),
         super.onViewCreated(view, savedInstanceState)
 
         setUpToolbar(toolbar)
+        parentActivity.supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(false)
+        }
 
         rvCharacters.setHasFixedSize(true)
         rvCharacters.adapter = adapter
