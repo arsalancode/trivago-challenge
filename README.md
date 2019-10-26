@@ -9,7 +9,7 @@ This sample app has been developed with Kotlin following an MVVM architecture pa
 * Details screen: List down character details by fetching from `Star Wars API`.
 
 <p align="center">
-  <img src="ss_app_flow.gif" width="200" >
+  <img src="screenshots/ss_app_flow.gif" width="200" >
   <img src="screenshots/ss_home-screen.png" width="200">
   <img src="screenshots/ss_searching-by-name.png" width="200">
   <img src="screenshots/ss_searching-by-birthyear.png" width="200">
@@ -38,7 +38,7 @@ This sample app has been developed with Kotlin following an MVVM architecture pa
 
 
 
-# Decisions
+### Decisions
 * **Koin**: Koin is a simple powerful Dependency injection framework for Kotlin. Written in pure Kotlin using functional resolution only: no proxy, no code generation, no reflection!
 
 * **Modular**: The app is developed with a modular approach to support following:
@@ -56,6 +56,35 @@ This sample app has been developed with Kotlin following an MVVM architecture pa
 * `CharacterActivity` holds the `CharacterSearchFragment` & `CharacterDetailsFragment`.
 * The packages are "by-feature" for easier access.
 
+
+## The chain
+Used SWAPI service to build the following chain:
+* Hit the `/people/{id/}` for a particular character. This response would give you multiple `/species/{id}/` urls and multiple `/films/{id}/` urls.
+* Fetch the specie details from each `/species/{id}/`. These details would also contain a `/planets/{id}/` url, hit this and get the planet details.
+* Fetch the film details from each `/films/{id}/` url.
+* Combine the responses of `/people/{id}/`, multiple `/species/{id}/`, `/planets/{id}/` & multiple `/films/{id}/` into a model.
+
+
+### Considerations
+Some species may not have a planet. This should not break the chain.
+Try to run the species + planets and films fetch in parallel.
+
+## The Rx Chain
+
+**1. Get basic details**
+![Basic details](screenshots/1-character-details.png)
+
+**2(a). Get species & planets details from basic details**
+![Species & planets details](screenshots/2a-species-and-homeworld.png)
+
+**2(b). Get film details from basic details**
+![Film details](screenshots/2b-films.png)
+
+**3. Merge species, planets and film details to basic details and send to UI**
+![Merge](screenshots/3-merge.png)
+
+
+
 # Running
 You will need a device / emulator with Android Oreo (API 27) and up.
 ![Configuration](screenshots/run_configuration.png)
@@ -68,11 +97,7 @@ Test cases for the [`CharacterSearchVM`](characters/src/test/java/com/karntrehan
 * `aacTesting` : Test helpers for LiveData
 
 
-# Contribution
-Feel free to open an issue or submit a pull request with improvements.
-
-
-### License
+# License
 ```
 Licensed under the Apache License, Version 2.0
 ```

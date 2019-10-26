@@ -2,12 +2,15 @@ package com.trivago.challenge.characters.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.trivago.challenge.viewmodel.BaseVM
+import com.trivago.challenge.characters.model.CharacterDetailsModel
+import com.trivago.challenge.characters.model.FilmDetailsModel
+import com.trivago.challenge.characters.model.HomeworldResponseModel
+import com.trivago.challenge.characters.model.SpeciesDetailsModel
+import com.trivago.challenge.characters.networking.CharacterDetailsContract
 import com.trivago.challenge.utils.divide
 import com.trivago.challenge.view.extensions.hide
 import com.trivago.challenge.view.extensions.show
-import com.trivago.challenge.characters.model.CharacterDetailsModel
-import com.trivago.challenge.characters.networking.CharacterDetailsContract
+import com.trivago.challenge.viewmodel.BaseVM
 import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.functions.BiFunction
@@ -42,7 +45,7 @@ class CharacterDetailsVM(private val repo: CharacterDetailsContract.Repo) : Base
                 .flatMap { details ->
                     //Fetch the species and film details in parallel and zip their results together
                     Single.zip(speciesAndHomeWorld(details), films(details),
-                        BiFunction { speciesDetails: List<com.trivago.challenge.characters.model.SpeciesDetailsModel>, filmDetails: List<com.trivago.challenge.characters.model.FilmDetailsModel> ->
+                        BiFunction { speciesDetails: List<SpeciesDetailsModel>, filmDetails: List<FilmDetailsModel> ->
                             //Wait for results and pass it to the details we already have
                             details.copy(specieDetails = speciesDetails, filmDetails = filmDetails)
                         })
@@ -63,7 +66,7 @@ class CharacterDetailsVM(private val repo: CharacterDetailsContract.Repo) : Base
     }
 
 
-    private fun speciesAndHomeWorld(details: CharacterDetailsModel): Single<List<com.trivago.challenge.characters.model.SpeciesDetailsModel>> {
+    private fun speciesAndHomeWorld(details: CharacterDetailsModel): Single<List< SpeciesDetailsModel>> {
         //Iterate through all the character species urls
         return Flowable.fromIterable(details.speciesUrl)
             //Get the details for each specie
@@ -76,12 +79,12 @@ class CharacterDetailsVM(private val repo: CharacterDetailsContract.Repo) : Base
                     .getHomeworldDetails(specie.homeworldUrl)
                     //If homeworld api fails, return a default object
                     // to allow the stream to continue.
-                    .onErrorReturn { com.trivago.challenge.characters.model.HomeworldResponseModel() }
+                    .onErrorReturn {  HomeworldResponseModel() }
             }
             .observeOn(Schedulers.computation())
             //Combine the specie details with homeworld details
             .map { homeworldResponse ->
-                com.trivago.challenge.characters.model.SpeciesDetailsModel(
+                 SpeciesDetailsModel(
                     specieName, specieLanguage,
                     homeworldResponse.name, homeworldResponse.population
                 )
@@ -90,13 +93,13 @@ class CharacterDetailsVM(private val repo: CharacterDetailsContract.Repo) : Base
             .toList()
     }
 
-    private fun films(details: CharacterDetailsModel): Single<List<com.trivago.challenge.characters.model.FilmDetailsModel>>? {
+    private fun films(details: CharacterDetailsModel): Single<List< FilmDetailsModel>>? {
         return Flowable.fromIterable(details.filmUrls)
             //Get details from each film
             .flatMapSingle { filmUrl -> repo.getFilmDetails(filmUrl) }
             //Convert response model to model required by UI
             .map { film ->
-                com.trivago.challenge.characters.model.FilmDetailsModel(
+                 FilmDetailsModel(
                     film.title,
                     film.releaseDate,
                     film.openingCrawl
