@@ -1,12 +1,12 @@
-package com.karntrehan.starwars.characters.details
+package com.trivago.challenge.characters.details
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.google.gson.Gson
-import com.trivago.challenge.utils.TestingUtils
-import com.karntrehan.starwars.characters.utils.TrampolineSchedulerRule
-import com.karntrehan.starwars.characters.viewmodel.CharacterDetailsVM
 import com.nhaarman.mockitokotlin2.*
+import com.trivago.challenge.characters.utils.TrampolineSchedulerRule
+import com.trivago.challenge.characters.viewmodel.CharacterDetailsVM
+import com.trivago.challenge.utils.TestingUtils
 import io.reactivex.Single
 import org.junit.Assert.assertEquals
 import org.junit.Before

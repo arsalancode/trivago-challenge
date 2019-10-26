@@ -1,4 +1,4 @@
-package com.karntrehan.starwars.characters.utils
+package com.trivago.challenge.characters.utils
 
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
