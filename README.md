@@ -1,6 +1,6 @@
 #  Starwars Android app
 
-This sample app has been developed with Kotlin following an MVVM architecture pattern with a modular approach for given **[Challenge.](challenge.txt)**
+This sample app has been developed with Kotlin following an MVVM architecture pattern with a modular approach for given **[Challenge.](challenge.md)**
 
 # Working
 ![Working](app_flow.gif)
