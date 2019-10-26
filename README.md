@@ -3,15 +3,14 @@
 This sample app has been developed with Kotlin following an MVVM architecture pattern with a modular approach for **[Challenge](challenge.txt)** given by Trivago.
 
 # Working
-* Home screen: List characters by fetching from `Star Wars API` with pagination, scroll to load more characters. 
+* Home screen: List characters by fetching from SWAPI with pagination, scroll to load more characters. 
 * Search by Name: Just enter name of character and press search button or wait. 
 * Search by Birth Year: Just enter year in digits. 
-* Details screen: List down character details by fetching from `Star Wars API`.
+* Details screen: List down character details by fetching from SWAPI.
 
 <p align="center">
   <img src="screenshots/ss_app_flow.gif" width="200" >
   <img src="screenshots/ss_home-screen.png" width="200">
-  <img src="screenshots/ss_searching-by-name.png" width="200">
   <img src="screenshots/ss_searching-by-birthyear.png" width="200">
   <img src="screenshots/ss_character-details.png" width="200">
 </p>
@@ -27,16 +26,6 @@ This sample app has been developed with Kotlin following an MVVM architecture pa
 * **[Reactive streams](https://github.com/ReactiveX/RxJava)**: Networking & Async.
 * **[LiveData and ViewModel](https://developer.android.com/topic/libraries/architecture)**: Isolate business logic and maintain state.
 
-### Library reference resources:
-1. Star Wars API: [https://swapi.co](https://swapi.co)
-2. Koin: [https://github.com/InsertKoinIO/koin](https://github.com/InsertKoinIO/koin)
-3.  Retrofit:[https://square.github.io/retrofit](https://square.github.io/retrofit/)
-4. RxJava2: [https://github.com/ReactiveX/RxJava](https://github.com/ReactiveX/RxJava)
-5. mockito-kotlin: [https://github.com/nhaarman/mockito-kotlin](https://github.com/nhaarman/mockito-kotlin)
-6. Robolectric: [https://github.com/robolectric/robolectric](https://github.com/robolectric/robolectric)
-7. Joda-time: [https://github.com/JodaOrg/joda-time](https://github.com/JodaOrg/joda-time)
-
-
 
 ### Decisions
 * **Koin**: Koin is a simple powerful Dependency injection framework for Kotlin. Written in pure Kotlin using functional resolution only: no proxy, no code generation, no reflection!
@@ -50,11 +39,11 @@ This sample app has been developed with Kotlin following an MVVM architecture pa
   * Smoother git flows
 
 
-# Structure
+# Project Structure
 * `app` module is where the application initialises.
 * `characters` dynamic module is where our sample screens reside. 
 * `CharacterActivity` holds the `CharacterSearchFragment` & `CharacterDetailsFragment`.
-* The packages are "by-feature" for easier access.
+* The packages are created using MVVM pattern.
 
 
 ## The chain
@@ -95,6 +84,15 @@ Test cases for the [`CharacterSearchVM`](characters/src/test/java/com/karntrehan
 * `robolectric` : A framework that brings fast and reliable unit tests to Android. 
 * `mockitoKotlin` : A small library that provides helper functions to work with Mockito in Kotlin.
 * `aacTesting` : Test helpers for LiveData
+
+### Library reference resources:
+1. SWAPI: [https://swapi.co](https://swapi.co)
+2. Koin: [https://github.com/InsertKoinIO/koin](https://github.com/InsertKoinIO/koin)
+3.  Retrofit:[https://square.github.io/retrofit](https://square.github.io/retrofit/)
+4. RxJava2: [https://github.com/ReactiveX/RxJava](https://github.com/ReactiveX/RxJava)
+5. mockito-kotlin: [https://github.com/nhaarman/mockito-kotlin](https://github.com/nhaarman/mockito-kotlin)
+6. Robolectric: [https://github.com/robolectric/robolectric](https://github.com/robolectric/robolectric)
+7. Joda-time: [https://github.com/JodaOrg/joda-time](https://github.com/JodaOrg/joda-time)
 
 
 # License

@@ -133,7 +133,7 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
             }
             .subscribe({
 
-                // Find BirthYear in next pages as well
+                // Before sending to UI, find Character in next pages as well
                 if (nextPageUrl != null) {
 
 //                    if (it.isNotEmpty())
@@ -145,7 +145,7 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
 
                 } else {
 
-                    // We've reached at end of data
+                    // We've reached at end of data, so let's send this data to UI
                     _loading.hide()
                     _paginationLoading.hide()
                     _characters.postValue(it)
