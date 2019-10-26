@@ -85,7 +85,7 @@ Test cases for the [`CharacterSearchVM`](characters/src/test/java/com/karntrehan
 * `mockitoKotlin` : A small library that provides helper functions to work with Mockito in Kotlin.
 * `aacTesting` : Test helpers for LiveData
 
-### Library reference resources:
+## Library reference resources:
 1. SWAPI: [https://swapi.co](https://swapi.co)
 2. Koin: [https://github.com/InsertKoinIO/koin](https://github.com/InsertKoinIO/koin)
 3.  Retrofit:[https://square.github.io/retrofit](https://square.github.io/retrofit/)
@@ -94,8 +94,12 @@ Test cases for the [`CharacterSearchVM`](characters/src/test/java/com/karntrehan
 6. Robolectric: [https://github.com/robolectric/robolectric](https://github.com/robolectric/robolectric)
 7. Joda-time: [https://github.com/JodaOrg/joda-time](https://github.com/JodaOrg/joda-time)
 
+## Credits
+1. [Carbon](https://carbon.now.sh): Used to create beautiful images of source code.
+2. [Convertio](https://convertio.co/mov-gif/): Used to convert app usage video to gif file. 
 
-# License
+
+## License
 ```
 Licensed under the Apache License, Version 2.0
 ```
