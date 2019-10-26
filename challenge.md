@@ -2,11 +2,9 @@
 Implement a small but scalable (!) app which interacts with the API. Please use the API provided to you in the resources section.
 
 
-
 The app should contain 2 main areas:
-
-Character search (Home Screen)
-Character details
+* Character search (Home Screen)
+* Character details
 
 
 Below are the specific attribute requirements for the character search & details screen.

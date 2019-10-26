@@ -136,8 +136,8 @@ class CharacterSearchVM(private val repo: CharacterSearchContract.Repo) : BaseVM
                 // Find BirthYear in next pages as well
                 if (nextPageUrl != null) {
 
-                    if (it.isNotEmpty())
-                        _characters.postValue(it)
+//                    if (it.isNotEmpty())
+//                        _characters.postValue(it)
 
                     nextPageUrl?.run {
                         filterCharactersByBirthYear( repo.characters(this), false, birthYear, it)

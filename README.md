@@ -1,14 +1,47 @@
-#  Starwars Android app
+#  StarWars Android Challenge
 
-This sample app has been developed with Kotlin following an MVVM architecture pattern with a modular approach for given **[Challenge.](challenge.md)**
+This sample app has been developed with Kotlin following an MVVM architecture pattern with a modular approach for **[Challenge](challenge.txt)** given by Trivago.
 
 # Working
-![Working](app_flow.gif)
 
-# Framework
+<p align="center">
+  <img src="ss_app_flow.gif" width="200" >
+  <img src="ss_searching-by-name.png" width="200">
+  <img src="http://achraf.fps-platform.com/login_screen.png" width="200">
+  <img src="http://achraf.fps-platform.com/doctors_list_screen.png" width="200">
+</p>
+<br>
+<br>
+
+
+
+
+![Working](ss_app_flow.gif)
+
+To search by Name: Just enter name of Character and press search button or wait. 
+![Search-By-Name](ss_searching-by-name.png)
+
+
+To Search by Birth Year: Just enter year digits. 
+![Search-By-Birth-Year](ss_searching-by-birthyear.png)
+
+
+
+### Framework
 * **[Koin](https://github.com/InsertKoinIO/koin)**: Dependency injection
 * **[Reactive streams](https://github.com/ReactiveX/RxJava)**: Networking & Async.
 * **[LiveData and ViewModel](https://developer.android.com/topic/libraries/architecture)**: Isolate business logic and maintain state.
+
+### Library reference resources:
+1. Star Wars API: [https://swapi.co](https://swapi.co)
+2. Koin: [https://github.com/InsertKoinIO/koin](https://github.com/InsertKoinIO/koin)
+3.  Retrofit:[https://square.github.io/retrofit](https://square.github.io/retrofit/)
+4. RxJava2: [https://github.com/ReactiveX/RxJava](https://github.com/ReactiveX/RxJava)
+5. mockito-kotlin: [https://github.com/nhaarman/mockito-kotlin](https://github.com/nhaarman/mockito-kotlin)
+6. Robolectric: [https://github.com/robolectric/robolectric](https://github.com/robolectric/robolectric)
+7. Joda-time: [https://github.com/JodaOrg/joda-time](https://github.com/JodaOrg/joda-time)
+
+
 
 # Decisions
 * **Koin**: Koin is a simple powerful Dependency injection framework for Kotlin. Written in pure Kotlin using functional resolution only: no proxy, no code generation, no reflection!
@@ -43,23 +76,8 @@ Test cases for the [`CharacterSearchVM`](characters/src/test/java/com/karntrehan
 # Contribution
 Feel free to open an issue or submit a pull request with improvements.
 
-# Licence
-    MIT License
-    
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.    
+
+### License
+```
+Licensed under the Apache License, Version 2.0
+```
