@@ -3,27 +3,22 @@
 This sample app has been developed with Kotlin following an MVVM architecture pattern with a modular approach for **[Challenge](challenge.txt)** given by Trivago.
 
 # Working
+* Home screen: List characters by fetching from `Star Wars API` with pagination, scroll to load more characters. 
+* Search by Name: Just enter name of character and press search button or wait. 
+* Search by Birth Year: Just enter year in digits. 
+* Details screen: List down character details by fetching from `Star Wars API`.
 
 <p align="center">
   <img src="ss_app_flow.gif" width="200" >
-  <img src="ss_searching-by-name.png" width="200">
-  <img src="http://achraf.fps-platform.com/login_screen.png" width="200">
-  <img src="http://achraf.fps-platform.com/doctors_list_screen.png" width="200">
+  <img src="screenshots/ss_home-screen.png" width="200">
+  <img src="screenshots/ss_searching-by-name.png" width="200">
+  <img src="screenshots/ss_searching-by-birthyear.png" width="200">
+  <img src="screenshots/ss_character-details.png" width="200">
 </p>
 <br>
 <br>
 
 
-
-
-![Working](ss_app_flow.gif)
-
-To search by Name: Just enter name of Character and press search button or wait. 
-![Search-By-Name](ss_searching-by-name.png)
-
-
-To Search by Birth Year: Just enter year digits. 
-![Search-By-Birth-Year](ss_searching-by-birthyear.png)
 
 
 
@@ -63,7 +58,7 @@ To Search by Birth Year: Just enter year digits.
 
 # Running
 You will need a device / emulator with Android Oreo (API 27) and up.
-![Configuration](run_configuration.png)
+![Configuration](screenshots/run_configuration.png)
 
 # Testing
 Test cases for the [`CharacterSearchVM`](characters/src/test/java/com/karntrehan/starwars/characters/search/CharacterSearchVMTest.kt) & [`CharacterDetailsVM`](characters/src/test/java/com/karntrehan/starwars/characters/details/CharacterDetailsVMTest.kt) have been implemented using 
